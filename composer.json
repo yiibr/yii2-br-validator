@@ -5,8 +5,8 @@
         "type": "yii2-extension",
         "license": "BSD-3-Clause",
         "support": {
-                "issues": "https://github.com/leandrogehlen/yii2-br-validation/issues",                
-                "source": "https://github.com/leandrogehlen/yii2-br-validation"
+                "issues": "https://github.com/leandrogehlen/yii2-brvalidation/issues",                
+                "source": "https://github.com/leandrogehlen/yii2-brvalidation"
         },
         "authors": [
                 {
