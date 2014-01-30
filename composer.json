@@ -1,5 +1,5 @@
 {
-        "name": "leandrogehlen/yii2-br-validation",
+        "name": "yiiext/yii2-brvalidation",
         "description": "Provide validations and features for brazilian localization",
         "keywords": ["yii", "validation", "model", "brasil", "brazil", "br", "cpf", "cnpj"],
         "type": "yii2-extension",
@@ -18,6 +18,6 @@
                 "yiisoft/yii2": "*"                
         },
         "autoload": {
-                "psr-4": { "yii\\brvalidation\\": "" }
+                "psr-4": { "yiiext\\brvalidation\\": "" }
         }
 }
