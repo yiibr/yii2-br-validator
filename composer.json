@@ -1,0 +1,23 @@
+{
+        "name": "leandrogehlen/yii2-br-validation",
+        "description": "Provide validations and features for brazilian localization",
+        "keywords": ["yii", "validation", "model", "brasil", "brazil", "br", "cpf", "cnpj"],
+        "type": "yii2-extension",
+        "license": "BSD-3-Clause",
+        "support": {
+                "issues": "https://github.com/leandrogehlen/yii2-br-validation/issues",                
+                "source": "https://github.com/leandrogehlen/yii2-br-validation"
+        },
+        "authors": [
+                {
+                        "name": "Leandro Guindani Gehlen",
+                        "email": "leandrogehlen@gmail.com"
+                }
+        ],
+        "require": {
+                "yiisoft/yii2": "*"                
+        },
+        "autoload": {
+                "psr-4": { "yii\\brvalidation\\": "" }
+        }
+}
