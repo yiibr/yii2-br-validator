@@ -57,4 +57,5 @@ class PersonForm extends Model
 			['cnpj', CnpjValidator::className()],
 		];
 	}
+}
 ```
