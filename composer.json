@@ -1,12 +1,12 @@
 {
-        "name": "yiiext/yii2-brvalidation",
+        "name": "leandrogehlen/yii2-brvalidator",
         "description": "Provide validations and features for brazilian localization",
-        "keywords": ["yii", "validation", "model", "brasil", "brazil", "br", "cpf", "cnpj"],
+        "keywords": ["yii", "validator", "model", "brasil", "brazil", "br", "cpf", "cnpj"],
         "type": "yii2-extension",
         "license": "BSD-3-Clause",
         "support": {
-                "issues": "https://github.com/leandrogehlen/yii2-brvalidation/issues",                
-                "source": "https://github.com/leandrogehlen/yii2-brvalidation"
+                "issues": "https://github.com/leandrogehlen/yii2-br-validator/issues",                
+                "source": "https://github.com/leandrogehlen/yii2-br-validator"
         },
         "minimum-stability": "dev",
         "authors": [
@@ -22,6 +22,6 @@
                 "phpunit/phpunit": "3.7.*"          
         },    
         "autoload": {
-                "psr-4": { "yiiext\\brvalidation\\": "" }
+                "psr-4": { "leandrogehlen\\brvalidator\\": "" }
         }
 }

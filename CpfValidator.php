@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @link https://github.com/leandrogehlen/yii2-brvalidation
- * @license https://github.com/leandrogehlen/yii2-brvalidation/blob/master/LICENSE
+ * @link https://github.com/leandrogehlen/yii2-br-validator
+ * @license https://github.com/leandrogehlen/yii2-br-validator/blob/master/LICENSE
  */
-namespace yiiext\brvalidation;
+namespace leandrogehlen\brvalidator;
 
 
 use yii\validators\Validator;
@@ -66,6 +66,7 @@ class CpfValidator extends Validator {
 					
 					if ($cpf{$c} != $d) {
 						$valid = false;
+						break;
 					}
 				}				
 			}
