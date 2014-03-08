@@ -10,7 +10,7 @@ use yii\validators\Validator;
 use Yii;
 
 /**
- * BooleanValidator checks if the attribute value is a valid CPF. 
+ * CnpjValidator checks if the attribute value is a valid CNPJ. 
  *
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
  * @since 2.0
@@ -33,20 +33,19 @@ class CnpjValidator extends Validator {
 	 * @inheritdoc
 	 */
 	protected function validateValue($value) {
-		
 		$valid = true;
-        $cnpj = str_pad(preg_replace('/[^0-9_]/', '', $value), 14, '0', STR_PAD_LEFT);
+        	$cnpj = str_pad(preg_replace('/[^0-9_]/', '', $value), 14, '0', STR_PAD_LEFT);
         
-        for ($x=0; $x<10; $x++) {
-            if ( $cnpj == str_repeat($x, 14) ) {
-            	$valid = false;
-            }
-        }
+        	for ($x=0; $x<10; $x++) {
+            		if ( $cnpj == str_repeat($x, 14) ) {
+            			$valid = false;
+            		}
+        	}
                         
-        if ( $valid) {
-        	if (strlen($cnpj) != 14) {
-        		$valid = false;
-        	} else  {
+        	if ( $valid) {
+        		if (strlen($cnpj) != 14) {
+        			$valid = false;
+        		} else  {
 				for($t = 12; $t < 14; $t ++) {
 					$d = 0;
 					$c = 0;
@@ -66,8 +65,8 @@ class CnpjValidator extends Validator {
 						break;
 					}
 				}
-        	}            
-        }
+        		}            
+        	}
 		
 		return ($valid) ? [] : [$this->message, []];		
 	}
