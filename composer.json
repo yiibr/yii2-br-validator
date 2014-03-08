@@ -1,5 +1,5 @@
 {
-        "name": "leandrogehlen/yii2-brvalidator",
+        "name": "leandrogehlen/yii2-br-validator",
         "description": "Provide validations and features for brazilian localization",
         "keywords": ["yii", "validator", "model", "brasil", "brazil", "br", "cpf", "cnpj"],
         "type": "yii2-extension",
