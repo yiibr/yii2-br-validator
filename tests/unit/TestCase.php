@@ -6,7 +6,6 @@ use yiiext\brvalidation\CpfValidator;
 use yii\helpers\ArrayHelper;
 use Yii;
 
-
 /**
  * This is the base class for all brvalidator unit tests.
  */
@@ -19,8 +18,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 	 * @throws \yii\base\NotSupportedException
 	 */
 	public static function setUpBeforeClass()
-	{
-				
+	{			
 		$vendorDir = __DIR__ . '/../../vendor';		
 		$vendorAutoload = $vendorDir . '/autoload.php';
 		
@@ -32,30 +30,40 @@ class TestCase extends \PHPUnit_Framework_TestCase
 		
 		require_once($vendorDir . '/yiisoft/yii2/Yii.php');		
 		Yii::setAlias('@vendor', $vendorDir);		
-		
 	}
 	
 	/**
-	 * Populates Yii::$app with a new application
-	 * The application will be destroyed on tearDown() automatically.
-	 * @param array $config The application configuration, if needed
-	 * @param string $appClass name of the application class to create
+	 * Populates Yii::$app with a new application	 
 	 */
-	protected function mockApplication($config = [], $appClass = '\yii\console\Application')
+	protected function mockApplication()
 	{
-		static $defaultConfig = [
+		static $config = [
 			'id' => 'testapp',
-			'basePath' => __DIR__,
-		];
-		$defaultConfig['vendorPath'] = dirname(dirname(__DIR__)) . '/vendor';		
+			'basePath' => __DIR__,			
+		];				
+		$config['vendorPath'] = dirname(dirname(__DIR__)) . '/vendor';				
 	
-		new $appClass(ArrayHelper::merge($defaultConfig, $config));
+		new \yii\console\Application($config);
 	}
 	
+	
+	/**
+	 * Sets up before test	 
+	 */
 	protected function setUp()
 	{
 		parent::setUp();
 		$this->mockApplication();
+	}
+		
+	/**
+	 * Clean up after test.
+	 * The application created with [[mockApplication]] will be destroyed.
+	 */
+	protected function tearDown()
+	{
+		parent::tearDown();
+		Yii::$app = null;
 	}
 	
 }
