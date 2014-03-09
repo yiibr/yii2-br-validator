@@ -11,18 +11,13 @@ use yii\validators\Validator;
 use Yii;
 
 /**
- * BooleanValidator checks if the attribute value is a valid CPF. 
+ * CpfValidator checks if the attribute value is a valid CPF. 
  *
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
  * @since 2.0
  */
 
 class CpfValidator extends Validator {
-	
-	protected function setUp()
-	{
-		parent::setUp();		
-	}
 	
 	/**
 	 * @inheritdoc
