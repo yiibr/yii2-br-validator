@@ -14,13 +14,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist leandrogehlen/yii2-br-validator "*"
+php composer.phar require --prefer-dist yiibr/yii2-br-validator "*"
 ```
 
 or add
 
 ```
-"leandrogehlen/yii2-br-validator": "*"
+"yiibr/yii2-br-validator": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -34,8 +34,8 @@ Add the rules as the following example
 
 use Yii;
 use yii\base\Model;
-use leandrogehlen\brvalidator\CpfValidator;
-use leandrogehlen\brvalidator\CnpjValidator;
+use yiibr\brvalidator\CpfValidator;
+use yiibr\brvalidator\CnpjValidator;
 
 class PersonForm extends Model
 {
