@@ -1,8 +1,7 @@
 <?php
 
-namespace leandrogehlen\brvalidator\tests\unit;
+namespace yiibr\brvalidator\tests\unit;
 
-use yiiext\brvalidation\CpfValidator;
 use yii\helpers\ArrayHelper;
 use Yii;
 

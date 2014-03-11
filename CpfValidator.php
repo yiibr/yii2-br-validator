@@ -4,7 +4,7 @@
  * @link https://github.com/leandrogehlen/yii2-br-validator
  * @license https://github.com/leandrogehlen/yii2-br-validator/blob/master/LICENSE
  */
-namespace leandrogehlen\brvalidator;
+namespace yiibr\brvalidator;
 
 
 use yii\validators\Validator;

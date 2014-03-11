@@ -1,10 +1,10 @@
 <?php
 
-namespace leandrogehlen\brvalidator\tests\unit;
+namespace yiibr\brvalidator\tests\unit;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use leandrogehlen\brvalidator\CpfValidator;
+use yiibr\brvalidator\CpfValidator;
 
 
 /**

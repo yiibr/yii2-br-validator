@@ -1,5 +1,5 @@
 {
-        "name": "leandrogehlen/yii2-br-validator",
+        "name": "yiibr/yii2-br-validator",
         "description": "Provide validations and features for brazilian localization",
         "keywords": ["yii", "validator", "model", "brasil", "brazil", "br", "cpf", "cnpj"],
         "type": "yii2-extension",
@@ -22,6 +22,6 @@
                 "phpunit/phpunit": "3.7.*"          
         },    
         "autoload": {
-                "psr-4": { "leandrogehlen\\brvalidator\\": "" }
+                "psr-4": { "yiibr\\brvalidator\\": "" }
         }
 }
