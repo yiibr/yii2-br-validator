@@ -5,13 +5,15 @@
  */
 namespace yiibr\brvalidator;
 
-use yii\validators\Validator;
 use Yii;
+use yii\validators\Validator;
+use yii\helpers\Json;
 
 /**
  * CpfValidator checks if the attribute value is a valid CPF.
  *
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
+ * @author Wanderson Bragança <wanderson.wbc@gmail.com>
  */
 class CpfValidator extends Validator
 {
@@ -57,5 +59,24 @@ class CpfValidator extends Validator
             }
         }
         return ($valid) ? [] : [$this->message, []];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function clientValidateAttribute($object, $attribute, $view)
+    {
+        $options = [
+            'message' => Yii::$app->getI18n()->format($this->message, [
+                'attribute' => $object->getAttributeLabel($attribute),
+            ], Yii::$app->language),
+        ];
+
+        if ($this->skipOnEmpty) {
+            $options['skipOnEmpty'] = 1;
+        }
+
+        ValidationAsset::register($view);
+        return 'yiibr.validation.cpf(value, messages, ' . Json::encode($options) . ');';
     }
 }
