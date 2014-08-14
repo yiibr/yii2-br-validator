@@ -97,51 +97,44 @@ yiibr.validation = (function($) {
             }
 
             var valid = true;
-
-            cnpj = value.replace(/[^\d]+/g, '');
-
-            if (isUsualNumbers(cnpj)) {
-                valid = false;
-            }
-
-            if (cnpj == '') {
-                valid = false;
-            }
+            var cnpj = value.replace(/[^\d]+/g, '');
 
             if (cnpj.length != 14) {
                 valid = false;
-            }
-
-            size = cnpj.length - 2;
-            numbers = cnpj.substring(0, size);
-            digits = cnpj.substring(size);
-            sum = 0;
-            pos = size - 7;
-            for (i = size; i >= 1; i--) {
-                sum += numbers.charAt(size - i) * pos--;
-                if (pos < 2) {
-                    pos = 9;
-                }
-            }
-            result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-            if (result != digits.charAt(0)) {
+            } else if (isUsualNumbers(cnpj)) {
                 valid = false;
-            }
-
-            size = size + 1;
-            numbers = cnpj.substring(0, size);
-            sum = 0;
-            pos = size - 7;
-            for (i = size; i >= 1; i--) {
-                sum += numbers.charAt(size - i) * pos--;
-                if (pos < 2) {
-                    pos = 9;
+            } else {
+                size = cnpj.length - 2;
+                numbers = cnpj.substring(0, size);
+                digits = cnpj.substring(size);
+                sum = 0;
+                pos = size - 7;
+                for (i = size; i >= 1; i--) {
+                    sum += numbers.charAt(size - i) * pos--;
+                    if (pos < 2) {
+                        pos = 9;
+                    }
                 }
-            }
-            result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+                result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+                if (result != digits.charAt(0)) {
+                    valid = false;
+                }
 
-            if (result != digits.charAt(1)) {
-                valid = false;
+                size = size + 1;
+                numbers = cnpj.substring(0, size);
+                sum = 0;
+                pos = size - 7;
+                for (i = size; i >= 1; i--) {
+                    sum += numbers.charAt(size - i) * pos--;
+                    if (pos < 2) {
+                        pos = 9;
+                    }
+                }
+                result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+
+                if (result != digits.charAt(1)) {
+                    valid = false;
+                }
             }
 
             if (!valid) {
