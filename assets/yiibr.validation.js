@@ -9,6 +9,27 @@
  */
 var yiibr = (typeof yiibr == "undefined" || !yiibr)? {} : yiibr;
 
+function isUsualNumbers(string) {
+    var usualNumbers = [
+        '00000000000000',
+        '11111111111111',
+        '22222222222222',
+        '33333333333333',
+        '44444444444444',
+        '55555555555555',
+        '66666666666666',
+        '77777777777777',
+        '88888888888888',
+        '99999999999999',
+    ];
+
+    if (usualChars.indexOf(string) >= 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 yiibr.validation = (function($) {
     var pub = {
         isEmpty: function(value) {
@@ -79,16 +100,7 @@ yiibr.validation = (function($) {
 
             cnpj = value.replace(/[^\d]+/g, '');
 
-            if (cnpj == "00000000000000" ||
-                    cnpj == "11111111111111" ||
-                    cnpj == "22222222222222" ||
-                    cnpj == "33333333333333" ||
-                    cnpj == "44444444444444" ||
-                    cnpj == "55555555555555" ||
-                    cnpj == "66666666666666" ||
-                    cnpj == "77777777777777" ||
-                    cnpj == "88888888888888" ||
-                    cnpj == "99999999999999") {
+            if (isUsualNumbers(cnpj)) {
                 valid = false;
             }
 
@@ -100,35 +112,35 @@ yiibr.validation = (function($) {
                 valid = false;
             }
 
-            tamanho = cnpj.length - 2;
-            numeros = cnpj.substring(0, tamanho);
-            digitos = cnpj.substring(tamanho);
-            soma = 0;
-            pos = tamanho - 7;
-            for (i = tamanho; i >= 1; i--) {
-                soma += numeros.charAt(tamanho - i) * pos--;
+            size = cnpj.length - 2;
+            numbers = cnpj.substring(0, size);
+            digits = cnpj.substring(size);
+            sum = 0;
+            pos = size - 7;
+            for (i = size; i >= 1; i--) {
+                sum += numbers.charAt(size - i) * pos--;
                 if (pos < 2) {
                     pos = 9;
                 }
             }
-            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-            if (resultado != digitos.charAt(0)) {
+            result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+            if (result != digits.charAt(0)) {
                 valid = false;
             }
 
-            tamanho = tamanho + 1;
-            numeros = cnpj.substring(0, tamanho);
-            soma = 0;
-            pos = tamanho - 7;
-            for (i = tamanho; i >= 1; i--) {
-                soma += numeros.charAt(tamanho - i) * pos--;
+            size = size + 1;
+            numbers = cnpj.substring(0, size);
+            sum = 0;
+            pos = size - 7;
+            for (i = size; i >= 1; i--) {
+                sum += numbers.charAt(size - i) * pos--;
                 if (pos < 2) {
                     pos = 9;
                 }
             }
-            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            result = sum % 11 < 2 ? 0 : 11 - sum % 11;
 
-            if (resultado != digitos.charAt(1)) {
+            if (result != digits.charAt(1)) {
                 valid = false;
             }
 
