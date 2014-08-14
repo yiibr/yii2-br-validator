@@ -62,4 +62,20 @@ class CnpjValidator extends Validator
         }
         return ($valid) ? [] : [$this->message, []];
     }
+    
+    public function clientValidateAttribute($object, $attribute, $view)
+    {
+        $options = [
+            'message' => Yii::$app->getI18n()->format($this->message, [
+                'attribute' => $object->getAttributeLabel($attribute),
+            ], Yii::$app->language)
+        ];
+
+        if ($this->skipOnEmpty) {
+            $options['skipOnEmpty'] = 1;
+        }
+
+        ValidationAsset::register($view);
+        return 'yiibr.validation.cnpj(value, messages, ' . Json::encode($options) . ');';
+    }
 }
