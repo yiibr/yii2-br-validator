@@ -69,7 +69,7 @@ class CpfValidator extends Validator
         $options = [
             'message' => Yii::$app->getI18n()->format($this->message, [
                 'attribute' => $object->getAttributeLabel($attribute),
-            ], Yii::$app->language),
+            ], Yii::$app->language)
         ];
 
         if ($this->skipOnEmpty) {
