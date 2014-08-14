@@ -23,7 +23,7 @@ function isUsualNumbers(string) {
         '99999999999999',
     ];
 
-    if (usualChars.indexOf(string) >= 0) {
+    if (usualNumbers.indexOf(string) >= 0) {
         return true;
     } else {
         return false;
