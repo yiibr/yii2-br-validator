@@ -3,7 +3,6 @@
 namespace yiibr\brvalidator\tests\unit;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 use yiibr\brvalidator\CeiValidator;
 
 
