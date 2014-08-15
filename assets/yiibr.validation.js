@@ -128,6 +128,27 @@ yiibr.validation = (function($) {
             if (!valid) {
                 pub.addMessage(messages, options.message, value);
             }
+        },
+        cei: function(value, messages, options) {
+            if (options.skipOnEmpty && pub.isEmpty(value)) {
+                return;
+            }
+
+            String.prototype.repeat = function(num) {
+                return new Array(isNaN(num) ? 1 : ++num).join(this);
+            }
+
+            var valid = true;
+            var cei = value.replace(/[^0-9_]/g, '').split('');
+            var sum = ((7 * cei[0]) + (4 * cei[1]) + (1 * cei[2]) + (8 * cei[3]) + (5 * cei[4]) + (2 * cei[5]) + (1 * cei[6]) + (6 * cei[7]) + (3 * cei[8]) + (7 * cei[9]) + (4 * cei[10])).toString().split('');
+
+            if (cei[11] != (10 - (parseInt(sum[1]) + parseInt(sum[2])))) {
+                valid = false;
+            }
+
+            if (!valid) {
+                pub.addMessage(messages, options.message, value);
+            }
         }
     };
     return pub;
