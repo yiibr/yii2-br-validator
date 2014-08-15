@@ -9,27 +9,6 @@
  */
 var yiibr = (typeof yiibr == "undefined" || !yiibr)? {} : yiibr;
 
-function isUsualNumbers(string) {
-    var usualNumbers = [
-        '00000000000000',
-        '11111111111111',
-        '22222222222222',
-        '33333333333333',
-        '44444444444444',
-        '55555555555555',
-        '66666666666666',
-        '77777777777777',
-        '88888888888888',
-        '99999999999999',
-    ];
-
-    if (usualNumbers.indexOf(string) >= 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 yiibr.validation = (function($) {
     var pub = {
         isEmpty: function(value) {
@@ -37,6 +16,15 @@ yiibr.validation = (function($) {
         },
         addMessage: function(messages, message, value) {
             messages.push(message.replace(/\{value\}/g, value));
+        },
+        isAllCharEquals: function(string) {
+            var c = string.charAt(0);
+            for (var i in string) {
+                if (c != string.charAt(i)) {
+                    return false;
+                }
+            }
+            return true;
         },
         cpf: function(value, messages, options) {
             if (options.skipOnEmpty && pub.isEmpty(value)) {
@@ -101,7 +89,7 @@ yiibr.validation = (function($) {
 
             if (cnpj.length != 14) {
                 valid = false;
-            } else if (isUsualNumbers(cnpj)) {
+            } else if (pub.isAllCharEquals(cnpj)) {
                 valid = false;
             } else {
                 size = cnpj.length - 2;
