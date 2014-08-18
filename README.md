@@ -5,6 +5,7 @@ Yii2 Extension that provide validators and features for brazilian localization
 
 * CPF: Cadastro de pessoa física (like a Security Social Numeber in USA) 
 * CNPJ: Cadastro nacional de pessoa jurídica 
+* CEI: Cadastro específico no INSS (número de matrícula)
 
 Installation
 ------------
@@ -36,12 +37,14 @@ use Yii;
 use yii\base\Model;
 use yiibr\brvalidator\CpfValidator;
 use yiibr\brvalidator\CnpjValidator;
+use yiibr\brvalidator\CeiValidator;
 
 class PersonForm extends Model
 {
 	public $name;
 	public $cpf;
 	public $cnpj;
+	public $cei;
 
 	/**
 	 * @return array the validation rules.
@@ -55,6 +58,8 @@ class PersonForm extends Model
 			['cpf', CpfValidator::className()],
 			// cnpj validator
 			['cnpj', CnpjValidator::className()],
+			// cei validator
+			['cei', CeiValidator::className()]
 		];
 	}
 }
