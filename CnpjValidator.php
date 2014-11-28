@@ -6,6 +6,7 @@
 namespace yiibr\brvalidator;
 
 use yii\validators\Validator;
+use yii\helpers\Json;
 use Yii;
 
 /**
