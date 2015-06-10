@@ -6,6 +6,8 @@ Yii2 Extension that provide validators and features for brazilian localization
 * CPF: Cadastro de pessoa física (like a Security Social Numeber in USA) 
 * CNPJ: Cadastro nacional de pessoa jurídica 
 * CEI: Cadastro específico no INSS (número de matrícula)
+ 
+[![Yii2](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat)](http://www.yiiframework.com/)
 
 Installation
 ------------
