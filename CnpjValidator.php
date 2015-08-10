@@ -33,7 +33,7 @@ class CnpjValidator extends Validator
     protected function validateValue($value)
     {
         $valid = true;
-        $cnpj = str_pad(preg_replace('/[^0-9_]/', '', $value), 14, '0', STR_PAD_LEFT);
+        $cnpj = preg_replace('/[^0-9_]/', '', $value);
 
         for ($x=0; $x<10; $x++) {
             if ( $cnpj == str_repeat($x, 14) ) {

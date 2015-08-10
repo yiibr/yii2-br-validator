@@ -34,7 +34,7 @@ class CpfValidator extends Validator
     protected function validateValue($value)
     {
         $valid = true;
-        $cpf = str_pad(preg_replace('/[^0-9]/', '', $value ), 11, '0', STR_PAD_LEFT);
+        $cpf = preg_replace('/[^0-9]/', '', $value);
 
         for($x = 0; $x < 10; $x ++) {
             if ($cpf == str_repeat ( $x, 11 )) {
