@@ -1,6 +1,6 @@
 <?php
 
-namespace yiibr\brvalidator\tests\unit;
+namespace yiibr\brvalidator\tests;
 
 use Yii;
 use yiibr\brvalidator\CeiValidator;
