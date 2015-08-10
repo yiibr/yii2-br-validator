@@ -8,6 +8,7 @@
                 "issues": "https://github.com/leandrogehlen/yii2-br-validator/issues",                
                 "source": "https://github.com/leandrogehlen/yii2-br-validator"
         },
+        "minimum-stability": "stable",
         "authors": [
                 {
                         "name": "Leandro Guindani Gehlen",
