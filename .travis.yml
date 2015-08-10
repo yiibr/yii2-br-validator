@@ -19,4 +19,8 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction
 
 script:
-   - vendor/bin/phpunit --coverage-text
+   - vendor/bin/phpunit --coverage-clover=coverage.clover
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --access-token="24c78b0b7610812f48c6218173ab8552888c7c6b73edd6c22b632c538c0ee1a" --format=php-clover coverage.clover
