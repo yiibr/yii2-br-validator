@@ -8,6 +8,9 @@ Yii2 Extension that provide validators and features for brazilian localization
 * CEI: Cadastro específico no INSS (número de matrícula)
  
 [![Yii2](https://img.shields.io/badge/Powered_by-Yii_Framework-green.svg?style=flat)](http://www.yiiframework.com/)
+[![Latest Stable Version](https://poser.pugx.org/leandrogehlen/yii2-querybuilder/v/stable.png)](https://packagist.org/packages/leandrogehlen/yii2-querybuilder)
+[![Build Status](https://travis-ci.org/yiibr/yii2-br-validator.svg?branch=master)](https://travis-ci.org/yiibr/yii2-br-validator)
+[![Total Downloads](https://poser.pugx.org/yiibr/yii2-br-validator/downloads.png)](https://packagist.org/packages/leandrogehlen/yii2-querybuilder)
 
 Installation
 ------------
