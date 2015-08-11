@@ -12,6 +12,7 @@ Yii2 Extension that provide validators and features for brazilian localization
 [![Build Status](https://travis-ci.org/yiibr/yii2-br-validator.svg?branch=master)](https://travis-ci.org/yiibr/yii2-br-validator)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiibr/yii2-br-validator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiibr/yii2-br-validator/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/yiibr/yii2-br-validator/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiibr/yii2-br-validator/?branch=master)
+[![Code Climate](https://codeclimate.com/github/yiibr/yii2-br-validator/badges/gpa.svg)](https://codeclimate.com/github/yiibr/yii2-br-validator)
 [![Total Downloads](https://poser.pugx.org/yiibr/yii2-br-validator/downloads.png)](https://packagist.org/packages/yiibr/yii2-br-validator)
 
 Installation
