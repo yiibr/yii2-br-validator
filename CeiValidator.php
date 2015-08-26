@@ -34,16 +34,16 @@ class CeiValidator extends Validator
      */
     protected function validateValue($value)
     {
-        $valid = true;
-
         $cei = preg_replace('/[^0-9_]/', '', $value);
-        $cei = str_split($cei, 1);
+        $valid  = strlen($cei) == 12;
 
-        $sum = (7 * $cei[0]) + (4 * $cei[1]) + (1 * $cei[2]) + (8 * $cei[3]) + (5 * $cei[4]) + (2 * $cei[5]) + (1 * $cei[6]) + (6 * $cei[7]) + (3 * $cei[8]) + (7 * $cei[9]) + (4 * $cei[10]);
-        $sum = str_split($sum, 1);
+        if ($valid) {
+            $cei = str_split($cei, 1);
+            $sum = (7 * $cei[0]) + (4 * $cei[1]) + (1 * $cei[2]) + (8 * $cei[3]) + (5 * $cei[4]) + (2 * $cei[5]) +
+                   (1 * $cei[6]) + (6 * $cei[7]) + (3 * $cei[8]) + (7 * $cei[9]) + (4 * $cei[10]);
 
-        if ($cei[11] != (10 - ($sum[1] + $sum[2]))) {
-            $valid = false;
+            $dv = abs(10 - ($sum%10 + $sum/10) % 10);
+            $valid = ($cei[11] == $dv);
         }
 
         return ($valid) ? [] : [$this->message, []];
