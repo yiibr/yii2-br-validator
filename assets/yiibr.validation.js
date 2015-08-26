@@ -32,7 +32,8 @@ yiibr.validation = (function($) {
             }
             String.prototype.repeat = function(num) {
                 return new Array(isNaN(num) ? 1 : ++num).join(this);
-            }
+            };
+
             var valid = true;
             var cpf = value.replace(/[^0-9_]/g, "");
             if (cpf.length != 11) {
@@ -82,7 +83,7 @@ yiibr.validation = (function($) {
 
             String.prototype.repeat = function(num) {
                 return new Array(isNaN(num) ? 1 : ++num).join(this);
-            }
+            };
 
             var valid = true;
             var cnpj = value.replace(/[^\d]+/g, '');
@@ -134,16 +135,15 @@ yiibr.validation = (function($) {
                 return;
             }
 
-            String.prototype.repeat = function(num) {
-                return new Array(isNaN(num) ? 1 : ++num).join(this);
-            }
-
-            var valid = true;
             var cei = value.replace(/[^0-9_]/g, '').split('');
-            var sum = ((7 * cei[0]) + (4 * cei[1]) + (1 * cei[2]) + (8 * cei[3]) + (5 * cei[4]) + (2 * cei[5]) + (1 * cei[6]) + (6 * cei[7]) + (3 * cei[8]) + (7 * cei[9]) + (4 * cei[10])).toString().split('');
+            var valid = cei.length == 12;
 
-            if (cei[11] != (10 - (parseInt(sum[1]) + parseInt(sum[2])))) {
-                valid = false;
+            if (valid) {
+                var sum = (7 * cei[0]) + (4 * cei[1]) + (1 * cei[2]) + (8 * cei[3]) + (5 * cei[4]) + (2 * cei[5]) +
+                          (1 * cei[6]) + (6 * cei[7]) + (3 * cei[8]) + (7 * cei[9]) + (4 * cei[10]);
+
+                var dv = abs(10 - (sum % 10 + sum / 10) % 10);
+                valid = (cei[11] == dv);
             }
 
             if (!valid) {
