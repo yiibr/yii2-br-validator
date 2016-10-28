@@ -7,7 +7,7 @@
  * @license https://github.com/yiibr/yii2-br-validator/blob/master/LICENSE
  * @author Wanderson Bragança <wanderson.wbc@gmail.com>
  */
-var yiibr = (typeof yiibr == "undefined" || !yiibr)? {} : yiibr;
+ var yiibr = (typeof yiibr == "undefined" || !yiibr)? {} : yiibr;
 
 yiibr.validation = (function($) {
     var pub = {
@@ -142,8 +142,12 @@ yiibr.validation = (function($) {
                 var sum = (7 * cei[0]) + (4 * cei[1]) + (1 * cei[2]) + (8 * cei[3]) + (5 * cei[4]) + (2 * cei[5]) +
                           (1 * cei[6]) + (6 * cei[7]) + (3 * cei[8]) + (7 * cei[9]) + (4 * cei[10]);
 
-                var dv = abs(10 - (sum % 10 + sum / 10) % 10);
-                valid = (cei[11] == dv);
+                var sumString = String(sum),
+                    unidade = parseInt(sumString.substr(-1, 1)),
+                    dezena = parseInt(sumString.substr(-2, 1)),
+                    digitoVerificador = (10 - (dezena + unidade));
+
+                valid = parseInt(cei[11]) == digitoVerificador;
             }
 
             if (!valid) {
