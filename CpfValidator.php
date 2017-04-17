@@ -46,7 +46,7 @@ class CpfValidator extends Validator
                 $valid = false;
             } else {
                 for ($t = 9; $t < 11; $t ++) {
-                    $d = 0;
+                    $d = 10;
                     for($c = 0; $c < $t; $c ++) {
                         $d += $cpf {$c} * (($t + 1) - $c);
                     }
