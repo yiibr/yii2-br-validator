@@ -8,7 +8,7 @@
     "issues": "https://github.com/yiibr/yii2-br-validator/issues",
     "source": "https://github.com/yiibr/yii2-br-validator"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "repositories": [
     {
       "type": "composer",
