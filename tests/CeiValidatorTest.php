@@ -2,7 +2,6 @@
 
 namespace yiibr\brvalidator\tests;
 
-use Yii;
 use yiibr\brvalidator\CeiValidator;
 
 

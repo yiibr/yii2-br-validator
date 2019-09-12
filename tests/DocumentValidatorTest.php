@@ -3,9 +3,7 @@
 namespace yiibr\brvalidator\tests;
 
 use yii\base\Model;
-use yiibr\brvalidator\CeiValidator;
 use yiibr\brvalidator\CnpjValidator;
-use yiibr\brvalidator\DocumentValidator;
 
 /**
  * DocumentValidatorTest

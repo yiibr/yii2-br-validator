@@ -2,9 +2,7 @@
 
 namespace yiibr\brvalidator\tests;
 
-use Yii;
 use yiibr\brvalidator\CnpjValidator;
-
 
 /**
  * CpfValidatorTest
