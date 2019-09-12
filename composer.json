@@ -9,6 +9,12 @@
     "source": "https://github.com/yiibr/yii2-br-validator"
   },
   "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
   "authors": [
     {
       "name": "Leandro Guindani Gehlen",
