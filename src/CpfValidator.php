@@ -5,18 +5,17 @@
  */
 namespace yiibr\brvalidator;
 
-use yii\validators\Validator;
-use yii\helpers\Json;
 use Yii;
+use yii\helpers\Json;
 
 /**
- * CnpjValidator checks if the attribute value is a valid CNPJ.
+ * CpfValidator checks if the attribute value is a valid CPF.
  *
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
+ * @author Wanderson Bragança <wanderson.wbc@gmail.com>
  */
-class CnpjValidator extends DocumentValidator
+class CpfValidator extends DocumentValidator
 {
-
     /**
      * @inheritdoc
      */
@@ -34,28 +33,24 @@ class CnpjValidator extends DocumentValidator
     protected function validateValue($value)
     {
         $valid = true;
-        $cnpj = preg_replace('/[^0-9_]/', '', $value);
+        $cpf = preg_replace('/[^0-9]/', '', $value);
 
-        for ($x=0; $x<10; $x++) {
-            if ( $cnpj == str_repeat($x, 14) ) {
+        for($x = 0; $x < 10; $x ++) {
+            if ($cpf == str_repeat ( $x, 11 )) {
                 $valid = false;
             }
         }
         if ($valid) {
-            if (strlen($cnpj) != 14) {
+            if (strlen ( $cpf ) != 11) {
                 $valid = false;
-            } else  {
-                for ($t = 12; $t < 14; $t ++) {
+            } else {
+                for ($t = 9; $t < 11; $t ++) {
                     $d = 0;
-                    $c = 0;
-                    for ($m = $t - 7; $m >= 2; $m --, $c ++) {
-                        $d += $cnpj {$c} * $m;
-                    }
-                    for ($m = 9; $m >= 2; $m --, $c ++) {
-                        $d += $cnpj {$c} * $m;
+                    for($c = 0; $c < $t; $c ++) {
+                        $d += $cpf {$c} * (($t + 1) - $c);
                     }
                     $d = ((10 * $d) % 11) % 10;
-                    if ($cnpj {$c} != $d) {
+                    if ($cpf{$c} != $d) {
                         $valid = false;
                         break;
                     }
@@ -65,6 +60,9 @@ class CnpjValidator extends DocumentValidator
         return ($valid) ? [] : [$this->message, []];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function clientValidateAttribute($object, $attribute, $view)
     {
         $options = [
@@ -78,6 +76,6 @@ class CnpjValidator extends DocumentValidator
         }
 
         ValidationAsset::register($view);
-        return 'yiibr.validation.cnpj(value, messages, ' . Json::encode($options) . ');';
+        return 'yiibr.validation.cpf(value, messages, ' . Json::encode($options) . ');';
     }
 }

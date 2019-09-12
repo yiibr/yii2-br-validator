@@ -8,7 +8,6 @@
 namespace yiibr\brvalidator;
 
 use yii\helpers\Json;
-use yii\validators\Validator;
 use Yii;
 
 /**

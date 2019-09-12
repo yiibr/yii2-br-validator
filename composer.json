@@ -1,16 +1,7 @@
 {
   "name": "yiibr/yii2-br-validator",
   "description": "Provide validations and features for brazilian localization",
-  "keywords": [
-    "yii",
-    "validator",
-    "model",
-    "brasil",
-    "brazil",
-    "br",
-    "cpf",
-    "cnpj"
-  ],
+  "keywords": ["yii", "validator", "model", "brasil", "brazil", "br", "cpf", "cnpj", "cei"],
   "type": "yii2-extension",
   "license": "BSD-3-Clause",
   "support": {
@@ -32,7 +23,8 @@
   },
   "autoload": {
     "psr-4": {
-      "yiibr\\brvalidator\\": ""
+      "yiibr\\brvalidator\\": "src",
+      "yiibr\\brvalidator\\tests\\": "tests"
     }
   }
 }
