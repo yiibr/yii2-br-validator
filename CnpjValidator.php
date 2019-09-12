@@ -14,8 +14,9 @@ use Yii;
  *
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
  */
-class CnpjValidator extends Validator
+class CnpjValidator extends DocumentValidator
 {
+
     /**
      * @inheritdoc
      */
@@ -63,7 +64,7 @@ class CnpjValidator extends Validator
         }
         return ($valid) ? [] : [$this->message, []];
     }
-    
+
     public function clientValidateAttribute($object, $attribute, $view)
     {
         $options = [

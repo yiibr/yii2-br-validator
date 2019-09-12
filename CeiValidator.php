@@ -16,7 +16,7 @@ use Yii;
  *
  * @author Guilherme Lessa <gl-lessa@hotmail.com>
  */
-class CeiValidator extends Validator
+class CeiValidator extends DocumentValidator
 {
 
     /**
@@ -58,7 +58,7 @@ class CeiValidator extends Validator
         $options = [
             'message' => Yii::$app->getI18n()->format($this->message, [
                 'attribute' => $object->getAttributeLabel($attribute),
-                    ], Yii::$app->language),
+            ], Yii::$app->language),
         ];
 
         if ($this->skipOnEmpty) {

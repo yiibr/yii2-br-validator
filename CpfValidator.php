@@ -15,7 +15,7 @@ use yii\helpers\Json;
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
  * @author Wanderson Bragança <wanderson.wbc@gmail.com>
  */
-class CpfValidator extends Validator
+class CpfValidator extends DocumentValidator
 {
     /**
      * @inheritdoc
