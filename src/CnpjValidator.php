@@ -48,13 +48,13 @@ class CnpjValidator extends DocumentValidator
                     $d = 0;
                     $c = 0;
                     for ($m = $t - 7; $m >= 2; $m --, $c ++) {
-                        $d += $cnpj {$c} * $m;
+                        $d += $cnpj[$c] * $m;
                     }
                     for ($m = 9; $m >= 2; $m --, $c ++) {
-                        $d += $cnpj {$c} * $m;
+                        $d += $cnpj[$c] * $m;
                     }
                     $d = ((10 * $d) % 11) % 10;
-                    if ($cnpj {$c} != $d) {
+                    if ($cnpj[$c] != $d) {
                         $valid = false;
                         break;
                     }
