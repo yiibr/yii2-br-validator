@@ -8,7 +8,6 @@
     "issues": "https://github.com/yiibr/yii2-br-validator/issues",
     "source": "https://github.com/yiibr/yii2-br-validator"
   },
-  "minimum-stability": "dev",
   "repositories": [
     {
       "type": "composer",
@@ -31,6 +30,11 @@
     "psr-4": {
       "yiibr\\brvalidator\\": "src",
       "yiibr\\brvalidator\\tests\\": "tests"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
     }
   }
 }
