@@ -44,6 +44,7 @@ use Yii;
 use yii\base\Model;
 use yiibr\brvalidator\CpfValidator;
 use yiibr\brvalidator\CnpjValidator;
+use yiibr\brvalidator\CpfCnpjValidator;
 use yiibr\brvalidator\CeiValidator;
 
 class PersonForm extends Model
@@ -65,6 +66,8 @@ class PersonForm extends Model
 			['cpf', CpfValidator::className()],
 			// cnpj validator
 			['cnpj', CnpjValidator::className()],
+			// both cnpj and cpf validator
+			['cpf_cnpj', CpfCnpjValidator::className()],
 			// cei validator
 			['cei', CeiValidator::className()]
 		];
