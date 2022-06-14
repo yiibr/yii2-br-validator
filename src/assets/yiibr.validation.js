@@ -130,6 +130,93 @@ yiibr.validation = (function($) {
                 pub.addMessage(messages, options.message, value);
             }
         },
+        cpfCnpj: function(value, messages, options) {
+            if (options.skipOnEmpty && pub.isEmpty(value)) {
+                return;
+            }
+
+            String.prototype.repeat = function(num) {
+                return new Array(isNaN(num) ? 1 : ++num).join(this);
+            };
+
+            let valid = true;
+            const cpf_cnpj = value.replace(/\D/g, '');
+
+            if (pub.isAllCharEquals(cpf_cnpj)) {
+                valid = false;
+            } else if (cpf_cnpj.length == 14) {
+                size = cpf_cnpj.length - 2;
+                numbers = cpf_cnpj.substring(0, size);
+                digits = cpf_cnpj.substring(size);
+                sum = 0;
+                pos = size - 7;
+                for (i = size; i >= 1; i--) {
+                    sum += numbers.charAt(size - i) * pos--;
+                    if (pos < 2) {
+                        pos = 9;
+                    }
+                }
+                result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+                if (result != digits.charAt(0)) {
+                    valid = false;
+                }
+
+                size = size + 1;
+                numbers = cpf_cnpj.substring(0, size);
+                sum = 0;
+                pos = size - 7;
+                for (i = size; i >= 1; i--) {
+                    sum += numbers.charAt(size - i) * pos--;
+                    if (pos < 2) {
+                        pos = 9;
+                    }
+                }
+                result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+
+                if (result != digits.charAt(1)) {
+                    valid = false;
+                }
+            } else if(cpf_cnpj.length == 11){
+                for (let x = 0; x < 10; x++) {
+                    if (cpf_cnpj === x.toString().repeat(11)) {
+                        valid = false;
+                    }
+                }
+                if (valid) {
+                    const c = cpf_cnpj.substr(0, 9);
+                    const dv = cpf_cnpj.substr(9, 2);
+                    let d1 = 0;
+                    for (i = 0; i < 9; i++) {
+                        d1 += c.charAt(i) * (10 - i);
+                    }
+                    if (d1 == 0) {
+                        valid = false;
+                    } else {
+                        d1 = 11 - (d1 % 11);
+                        if (d1 > 9) d1 = 0;
+                        if (dv.charAt(0) != d1) {
+                            valid = false;
+                        } else {
+                            d1 *= 2;
+                            for (i = 0; i < 9; i++) {
+                                d1 += c.charAt(i) * (11 - i);
+                            }
+                            d1 = 11 - (d1 % 11);
+                            if (d1 > 9) d1 = 0;
+                            if (dv.charAt(1) != d1) {
+                                valid = false;
+                            }
+                        }
+                    }
+                }
+            } else {
+                valid = false;
+            }
+
+            if (!valid) {
+                pub.addMessage(messages, options.message, value);
+            }
+        }, 
         cei: function(value, messages, options) {
             if (options.skipOnEmpty && pub.isEmpty(value)) {
                 return;
