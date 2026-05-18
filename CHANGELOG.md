@@ -1,6 +1,10 @@
 Yii BR Validator
 ================
 
+1.1.2 May, 18 2026
+
+- Alphanumeric CNPJ (@thtmorais)
+
 1.1.1 Jun, 19 2020
 ------------------
 

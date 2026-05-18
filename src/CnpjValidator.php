@@ -5,17 +5,18 @@
  */
 namespace yiibr\brvalidator;
 
-use yii\helpers\Json;
 use Yii;
+use yii\helpers\Json;
 
 /**
  * CnpjValidator checks if the attribute value is a valid CNPJ.
  *
  * @author Leandro Gehlen <leandrogehlen@gmail.com>
+ * @author Wanderson Bragança <wanderson.wbc@gmail.com>
+ * @author Matheus Evangelista Morais <thtmorais@hotmail.com>
  */
 class CnpjValidator extends DocumentValidator
 {
-
     /**
      * @inheritdoc
      */
@@ -33,37 +34,53 @@ class CnpjValidator extends DocumentValidator
     protected function validateValue($value)
     {
         $valid = true;
-        $cnpj = preg_replace('/[^0-9_]/', '', $value);
+        
+        $cnpj = strtoupper(preg_replace('/[-\/.\s]/', '', $value));
 
-        for ($x=0; $x<10; $x++) {
-            if ( $cnpj == str_repeat($x, 14) ) {
+        if (strlen($cnpj) != 14) {
+            $valid = false;
+        } elseif (str_repeat($cnpj[0], 14) === $cnpj) {
+            $valid = false;
+        } else {
+            $sum = 0;
+            $pos = 5;
+            for ($i = 0; $i < 12; $i++) {
+                $val = ord($cnpj[$i]) - 48;
+                $sum += $val * $pos;
+                $pos--;
+                if ($pos < 2) {
+                    $pos = 9;
+                }
+            }
+            $result = ($sum % 11) < 2 ? 0 : 11 - ($sum % 11);
+            if ($cnpj[12] != $result) {
                 $valid = false;
             }
-        }
-        if ($valid) {
-            if (strlen($cnpj) != 14) {
-                $valid = false;
-            } else  {
-                for ($t = 12; $t < 14; $t ++) {
-                    $d = 0;
-                    $c = 0;
-                    for ($m = $t - 7; $m >= 2; $m --, $c ++) {
-                        $d += $cnpj[$c] * $m;
+
+            if ($valid) {
+                $sum = 0;
+                $pos = 6;
+                for ($i = 0; $i < 13; $i++) {
+                    $val = ord($cnpj[$i]) - 48;
+                    $sum += $val * $pos;
+                    $pos--;
+                    if ($pos < 2) {
+                        $pos = 9;
                     }
-                    for ($m = 9; $m >= 2; $m --, $c ++) {
-                        $d += $cnpj[$c] * $m;
-                    }
-                    $d = ((10 * $d) % 11) % 10;
-                    if ($cnpj[$c] != $d) {
-                        $valid = false;
-                        break;
-                    }
+                }
+                $result = ($sum % 11) < 2 ? 0 : 11 - ($sum % 11);
+                if ($cnpj[13] != $result) {
+                    $valid = false;
                 }
             }
         }
+
         return ($valid) ? [] : [$this->message, []];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function clientValidateAttribute($object, $attribute, $view)
     {
         $options = [

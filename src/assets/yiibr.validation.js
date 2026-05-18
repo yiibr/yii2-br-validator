@@ -6,6 +6,7 @@
  * @link https://github.com/yiibr/yii2-br-validator
  * @license https://github.com/yiibr/yii2-br-validator/blob/master/LICENSE
  * @author Wanderson Bragança <wanderson.wbc@gmail.com>
+ * @author Matheus Evangelista Morais <thtmorais@hotmail.com>
  */
  var yiibr = (typeof yiibr == "undefined" || !yiibr)? {} : yiibr;
 
@@ -81,48 +82,51 @@ yiibr.validation = (function($) {
                 return;
             }
 
-            String.prototype.repeat = function(num) {
-                return new Array(isNaN(num) ? 1 : ++num).join(this);
-            };
-
             var valid = true;
-            var cnpj = value.replace(/[^\d]+/g, '');
+            var cnpj = value.toUpperCase().replace(/[-\/.\s]/g, '');
 
             if (cnpj.length != 14) {
                 valid = false;
             } else if (pub.isAllCharEquals(cnpj)) {
                 valid = false;
             } else {
-                size = cnpj.length - 2;
-                numbers = cnpj.substring(0, size);
-                digits = cnpj.substring(size);
-                sum = 0;
-                pos = size - 7;
-                for (i = size; i >= 1; i--) {
-                    sum += numbers.charAt(size - i) * pos--;
+                var getCnpjValue = function(char) {
+                    var code = char.charCodeAt(0);
+                    return code - 48;
+                };
+
+                var size = 12;
+                var sum = 0;
+                var pos = 5;
+
+                for (var i = 0; i < size; i++) {
+                    sum += getCnpjValue(cnpj.charAt(i)) * pos;
+                    pos--;
                     if (pos < 2) {
                         pos = 9;
                     }
                 }
-                result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-                if (result != digits.charAt(0)) {
+                var result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+                if (result != parseInt(cnpj.charAt(12))) {
                     valid = false;
                 }
 
-                size = size + 1;
-                numbers = cnpj.substring(0, size);
-                sum = 0;
-                pos = size - 7;
-                for (i = size; i >= 1; i--) {
-                    sum += numbers.charAt(size - i) * pos--;
-                    if (pos < 2) {
-                        pos = 9;
+                if (valid) {
+                    size = 13;
+                    sum = 0;
+                    pos = 6;
+
+                    for (var i = 0; i < size; i++) {
+                        sum += getCnpjValue(cnpj.charAt(i)) * pos;
+                        pos--;
+                        if (pos < 2) {
+                            pos = 9;
+                        }
                     }
-                }
-                result = sum % 11 < 2 ? 0 : 11 - sum % 11;
-
-                if (result != digits.charAt(1)) {
-                    valid = false;
+                    result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+                    if (result != parseInt(cnpj.charAt(13))) {
+                        valid = false;
+                    }
                 }
             }
 
